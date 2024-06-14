@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 function MainPage() {
@@ -6,17 +6,18 @@ function MainPage() {
   const date = useSelector((state ) => state.card.product)
   
   const dispatch = useDispatch()
-  const buyClick = () => {
+  console.log(date)
+  const buyClick = (e) => {
   dispatch({
-    type: "INCRUISE" ,
-    paylaod:+1  
+    type: "INCREASE" ,
+    paylaod:e
   })
   }
 
 
   return (
     <div>
-      {date.map((e, index) => <div key={index}><div>{e.name}</div><button onClick={buyClick}>buy</button></div>)}
+      {date.map((e, index) => <div key={index}><div>{e.name}</div><button onClick={() =>buyClick(e)}>buy</button></div>)}
     </div>
   )
 }
